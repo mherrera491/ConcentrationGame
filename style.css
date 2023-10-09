@@ -1,0 +1,15 @@
+body {
+    text-align: center;
+}
+
+img {
+    width: 100px;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
