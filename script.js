@@ -35,15 +35,24 @@
 // Display a message to the player that they have won.
 // Finally, you will need to call the createBoard function to start the game.
 
+// Array of card objects
 const cards = [
   { value: "clubs-ace", image: "./assets/images/clubs_ace.svg" },
   { value: "diamonds-ace", image: "./assets/images/diamonds_ace.svg" },
   { value: "hearts-ace", image: "./assets/images/hearts_ace.svg" },
   { value: "spades-ace", image: "./assets/images/spades_ace.svg" },
   { value: "clubs-jack", image: "./assets/images/clubs_jack.svg" },
-  { value: "diamonds-queen", image: "./assets/images/diamonds-queen.svg" },
-  { value: "hearts-king-ace", image: "./assets/images/hearts-king.svg" },
+  { value: "diamonds-queen", image: "./assets/images/diamonds_queen.svg" },
+  { value: "hearts-king-ace", image: "./assets/images/hearts_king.svg" },
   { value: "joker", image: "./assets/images/joker_red.svg" },
+  { value: "clubs-ace", image: "./assets/images/clubs_ace.svg" },
+  { value: "diamonds-ace", image: "./assets/images/diamonds_ace.svg" },
+  { value: "hearts-ace", image: "./assets/images/hearts_ace.svg" },
+  { value: "spades-ace", image: "./assets/images/spades_ace.svg" },
+  { value: "clubs-jack", image: "./assets/images/clubs_jack.svg" },
+  { value: "diamonds-queen", image: "./assets/images/diamonds_queen.svg" },
+  { value: "hearts-king-ace", image: "./assets/images/hearts_king.svg" },
+  { value: "joker", image: "./assets/images/joker_red.svg" }
 ];
 
 // Function to shuffle cards
@@ -60,4 +69,21 @@ function shuffleCards(cardArray) {
 
 const shuffledCards = shuffleCards(cards);
 
-console.log(shuffledCards)
+const gameBoard = document.getElementById("game-board");
+
+function createGameBoard() {
+    gameBoard.innerHTML = "";
+    shuffledCards.forEach((card) => {
+        const cardElement = document.createElement("div");
+        cardElement.classList.add("card");
+        cardElement.style.backgroundImage = `url(${card.image})`;
+        gameBoard.appendChild(cardElement)
+    }); 
+    }
+
+const startButton = document.querySelector("#start-button")
+
+startButton.addEventListener("click", function() {
+    shuffleCards(cards);
+    createGameBoard();
+})
