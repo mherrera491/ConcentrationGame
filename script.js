@@ -40,19 +40,15 @@ const cards = [
   { value: "clubs-ace", image: "./assets/images/clubs_ace.svg" },
   { value: "diamonds-ace", image: "./assets/images/diamonds_ace.svg" },
   { value: "hearts-ace", image: "./assets/images/hearts_ace.svg" },
-  { value: "spades-ace", image: "./assets/images/spades_ace.svg" },
   { value: "clubs-jack", image: "./assets/images/clubs_jack.svg" },
   { value: "diamonds-queen", image: "./assets/images/diamonds_queen.svg" },
   { value: "hearts-king-ace", image: "./assets/images/hearts_king.svg" },
-  { value: "joker", image: "./assets/images/joker_red.svg" },
   { value: "clubs-ace", image: "./assets/images/clubs_ace.svg" },
   { value: "diamonds-ace", image: "./assets/images/diamonds_ace.svg" },
   { value: "hearts-ace", image: "./assets/images/hearts_ace.svg" },
-  { value: "spades-ace", image: "./assets/images/spades_ace.svg" },
   { value: "clubs-jack", image: "./assets/images/clubs_jack.svg" },
   { value: "diamonds-queen", image: "./assets/images/diamonds_queen.svg" },
-  { value: "hearts-king-ace", image: "./assets/images/hearts_king.svg" },
-  { value: "joker", image: "./assets/images/joker_red.svg" }
+  { value: "hearts-king-ace", image: "./assets/images/hearts_king.svg" }
 ];
 
 // Function to shuffle cards

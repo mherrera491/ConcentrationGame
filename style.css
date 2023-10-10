@@ -11,8 +11,8 @@ body {
 }
 
 .card {
-    width: 100px;
-    height: 150px;
+    width: 115px;
+    height: 165px;
     background-image: url("assets/images/blue.svg");
     background-size: cover;
     margin: 0;
