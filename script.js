@@ -35,22 +35,29 @@
 // Display a message to the player that they have won.
 // Finally, you will need to call the createBoard function to start the game.
 
+const cards = [
+  { value: "clubs-ace", image: "./assets/images/clubs_ace.svg" },
+  { value: "diamonds-ace", image: "./assets/images/diamonds_ace.svg" },
+  { value: "hearts-ace", image: "./assets/images/hearts_ace.svg" },
+  { value: "spades-ace", image: "./assets/images/spades_ace.svg" },
+  { value: "clubs-jack", image: "./assets/images/clubs_jack.svg" },
+  { value: "diamonds-queen", image: "./assets/images/diamonds-queen.svg" },
+  { value: "hearts-king-ace", image: "./assets/images/hearts-king.svg" },
+  { value: "joker", image: "./assets/images/joker_red.svg" },
+];
 
-// Blackjack
+// Function to shuffle cards
+function shuffleCards(cardArray) {
+  for (let i = cardArray.length - 1; i > 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    [cardArray[i], cardArray[randomIndex]] = [
+      cardArray[randomIndex],
+      cardArray[i],
+    ];
+  }
+  return cardArray;
+}
 
-// create a deck of cards... an array with 52 objects
-// create shuffle function
-// Create a player hand and a dealer hand
-// Deal two cards to each player and the dealer
-// If either player or dealer get 21 after first deal they win
-// Prompt the player to hit or stand
-// If the player hits, deal them another card
-// If the player stands, calculate their hand total
-// If the player's hand total is 21, they win
-// If the player's hand total is over 21, they lose
-// If the player's hand total is less than 21, the dealer draws cards until their hand total is greater than 17
-// If the dealer's hand total is over 21, they lose
-// If the dealer's hand total is less than or equal to 21, the dealer wins
-// Declare a winner
-// Add wager feature - if player wins, they win the wager. If player loses, they lose the wager
-// If dealer's hand and player's hand equals each other then it results in a push and player gets their wager back
+const shuffledCards = shuffleCards(cards);
+
+console.log(shuffledCards)

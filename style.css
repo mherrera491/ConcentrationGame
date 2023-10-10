@@ -10,6 +10,11 @@ img {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     gap: 20px;
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
+}
+
+#timer {
+    font-weight: bold;
+    font-size: larger;
 }
