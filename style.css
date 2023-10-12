@@ -1,5 +1,12 @@
 body {
     text-align: center;
+    background-image: url(./assets/images/poker-table-green-fabric-ehvbvg2v8010o3sx.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+h1 {
+    color: white;
 }
 
 #game-board {
@@ -24,6 +31,17 @@ body {
 
 
 #timer {
+    color: white;
     font-weight: bold;
     font-size: larger;
+}
+
+.action-buttons {
+    background-color: red;
+    color: white;
+    font-size: medium;
+    height: 30px;
+    width: 100px;
+    border-radius: 75px;
+    cursor: pointer;
 }
