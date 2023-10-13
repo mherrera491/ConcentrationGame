@@ -37,6 +37,7 @@ function shuffleCards(cardArray) {
   return cardArray;
 }
 
+// Creating HTML elements for the cards and displaying them on the game board
 function createCardElements(cards) {
   const gameBoard = document.querySelector("#game-board");
   gameBoard.innerHTML = "";
@@ -61,7 +62,6 @@ function createCardElements(cards) {
     cardElement.addEventListener("click", function () {
       cardElement.classList.toggle("un-flipped");
       cardElement.classList.remove("flipped")
-    // card.classList.toggle("un-flipped");
     });
 
     gameBoard.appendChild(cardElement);
@@ -70,25 +70,51 @@ function createCardElements(cards) {
 
 const gameBoard = document.querySelector("#game-board");
 
-// gameBoard.addEventListener("click", function (event) {
-//   const card = event.target.closest(".card");
-//   if (card) {
-//     card.classList.remove("flipped")
-//     card.classList.toggle("un-flipped");
-//   }
-// });
+let flippedCard = null; // Currently flipped card
+let prevFlippedCard = null; // Previously flipped card
+let waiting = false;
+
+gameBoard.addEventListener("click", function (event) {
+  const card = event.target.closest(".card");
+  if (card && !waiting) {
+    // Toggle the "un-flipped" class when a card is clicked
+    card.classList.toggle("flipped");
+    if (!flippedCard) {
+      // First card is flipped
+      flippedCard = card;
+    } else {
+      // Second card is flipped
+      prevFlippedCard = flippedCard;
+      flippedCard = card;
+      // Check if the two cards match
+      if (flippedCard.dataset.value === prevFlippedCard.dataset.value) {
+        // The cards match, so leave them face up
+        flippedCard = null;
+        prevFlippedCard = null;
+      } else {
+        // The cards don't match, so wait and then flip them back
+        waiting = true;
+        setTimeout(function () {
+          flippedCard.classList.toggle("un-flipped");
+          flippedCard.classList.remove("flipped");
+          prevFlippedCard.classList.toggle("un-flipped");
+          prevFlippedCard.classList.remove("flipped");
+          flippedCard = null;
+          prevFlippedCard = null;
+          waiting = false;
+        }, 1000); // Adjust this delay as needed
+      }
+    }
+  }
+});
 
 const startButton = document.querySelector("#start-button");
 startButton.addEventListener("click", function () {
   shuffleCards(cards);
   // console.log(shuffleCards(cards));
   createCardElements(cards);
-  // gameBoard.classList.add("show-front-faces");
-  // // cardsFlipped = true;
 
   setTimeout(function () {
-
-  //   gameBoard.classList.remove("show-front-faces");
 
     const allCards = document.querySelectorAll(".card");
     allCards.forEach((card) => {

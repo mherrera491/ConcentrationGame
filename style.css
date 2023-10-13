@@ -7,13 +7,14 @@ body {
 
 h1 {
     color: white;
+    text-align: center;
 }
 
 #game-board {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     gap: 20px;
-    max-width: 700px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
@@ -33,7 +34,6 @@ h1 {
 }
 
 .card .back-face {
-    /* background: url("/assets/images/blue.svg") center/cover no-repeat; */
     width: 115px;
     height: 165px;
     backface-visibility: hidden;
