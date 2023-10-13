@@ -37,9 +37,47 @@ function shuffleCards(cardArray) {
   return cardArray;
 }
 
+function createCardElements(cards) {
+  const gameBoard = document.querySelector("#game-board");
+  gameBoard.innerHTML = "";
+
+  for (const card of cards) {
+    const cardElement = document.createElement("div");
+    cardElement.classList.add("card");
+
+    const frontFace = document.createElement("img");
+    frontFace.classList.add("card-face", "front-face");
+    frontFace.src = card.image
+
+    const backFace = document.createElement("img");
+    backFace.classList.add("card-face", "back-face");
+    backFace.src = "/assets/images/blue.svg";
+
+    cardElement.appendChild(frontFace);
+    cardElement.appendChild(backFace);
+
+    cardElement.dataset.value = card.value;
+
+    gameBoard.appendChild(cardElement);
+  }
+}
+
+const gameBoard = document.querySelector("#game-board");
+
+gameBoard.addEventListener("click", function (event) {
+  const card = event.target.closest(".card");
+  if (card) {
+    card.classList.toggle("flipped");
+  }
+});
 
 const startButton = document.querySelector("#start-button");
 startButton.addEventListener("click", function () {
   shuffleCards(cards);
-  console.log(shuffleCards(cards))
+  // console.log(shuffleCards(cards));
+  createCardElements(cards);
+  gameBoard.classList.add("show-front-faces");
+  setTimeout(function () {
+    gameBoard.classList.remove("show-front-faces");
+  }, 1000);
 });

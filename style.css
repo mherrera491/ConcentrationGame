@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    background-image: url(./assets/images/poker-table-green-fabric-ehvbvg2v8010o3sx.jpg);
+    background-image: url(./assets/images/AdobeStock_93364974.jpeg);
     background-position: center;
     background-size: cover;
 }
@@ -22,6 +22,24 @@ h1 {
     height: 165px;
     cursor: pointer;
     transform: scale(1);
+    perspective: 1000px;
+}
+
+.card .front-face {
+    width: 115px;
+    height: 165px;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.card .back-face {
+    /* background: url("/assets/images/blue.svg") center/cover no-repeat; */
+    width: 115px;
+    height: 165px;
+}
+
+.card.flipped .front-face {
+    transform: rotateY(180deg);
 }
 
 .card:active {
