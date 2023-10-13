@@ -43,11 +43,11 @@ function createCardElements(cards) {
 
   for (const card of cards) {
     const cardElement = document.createElement("div");
-    cardElement.classList.add("card");
+    cardElement.classList.add("card", "flipped");
 
     const frontFace = document.createElement("img");
     frontFace.classList.add("card-face", "front-face");
-    frontFace.src = card.image
+    frontFace.src = card.image;
 
     const backFace = document.createElement("img");
     backFace.classList.add("card-face", "back-face");
@@ -58,26 +58,42 @@ function createCardElements(cards) {
 
     cardElement.dataset.value = card.value;
 
+    cardElement.addEventListener("click", function () {
+      cardElement.classList.toggle("un-flipped");
+      cardElement.classList.remove("flipped")
+    // card.classList.toggle("un-flipped");
+    });
+
     gameBoard.appendChild(cardElement);
   }
 }
 
 const gameBoard = document.querySelector("#game-board");
 
-gameBoard.addEventListener("click", function (event) {
-  const card = event.target.closest(".card");
-  if (card) {
-    card.classList.toggle("flipped");
-  }
-});
+// gameBoard.addEventListener("click", function (event) {
+//   const card = event.target.closest(".card");
+//   if (card) {
+//     card.classList.remove("flipped")
+//     card.classList.toggle("un-flipped");
+//   }
+// });
 
 const startButton = document.querySelector("#start-button");
 startButton.addEventListener("click", function () {
   shuffleCards(cards);
   // console.log(shuffleCards(cards));
   createCardElements(cards);
-  gameBoard.classList.add("show-front-faces");
+  // gameBoard.classList.add("show-front-faces");
+  // // cardsFlipped = true;
+
   setTimeout(function () {
-    gameBoard.classList.remove("show-front-faces");
-  }, 1000);
+
+  //   gameBoard.classList.remove("show-front-faces");
+
+    const allCards = document.querySelectorAll(".card");
+    allCards.forEach((card) => {
+      card.classList.remove("flipped");
+      card.classList.toggle("un-flipped")
+    });
+  }, 10000);
 });

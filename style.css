@@ -36,9 +36,14 @@ h1 {
     /* background: url("/assets/images/blue.svg") center/cover no-repeat; */
     width: 115px;
     height: 165px;
+    backface-visibility: hidden;
 }
 
-.card.flipped .front-face {
+.card.flipped .back-face {
+    transform: rotateY(180deg);
+}
+
+.card.un-flipped .front-face {
     transform: rotateY(180deg);
 }
 
