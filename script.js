@@ -61,7 +61,7 @@ function createCardElements(cards) {
 
     cardElement.addEventListener("click", function () {
       cardElement.classList.toggle("un-flipped");
-      cardElement.classList.remove("flipped")
+      cardElement.classList.remove("flipped");
     });
 
     gameBoard.appendChild(cardElement);
@@ -74,30 +74,27 @@ const flippedCards = [];
 // function checks for matches; will flip cards back over if no match is made
 function flipCard(cardElement) {
   if (flippedCards.length < 2) {
-    // Flip the card by toggling the "un-flipped" class
     cardElement.classList.toggle("flipped");
     flippedCards.push(cardElement);
 
     if (flippedCards.length === 2) {
-      // Two cards are flipped, check if they match
       const [card1, card2] = flippedCards;
       if (card1.dataset.value === card2.dataset.value) {
-        // Cards match, so keep them face up
-        flippedCards.length = 0; // Clear the array
+        flippedCards.length = 0;
       } else {
-        // Cards don't match, flip them back after a delay
         setTimeout(() => {
           card1.classList.toggle("un-flipped");
           card1.classList.remove("flipped");
           card2.classList.toggle("un-flipped");
           card2.classList.remove("flipped");
-          flippedCards.length = 0; // Clear the array
-        }, 1000); // Adjust this delay as needed
+          flippedCards.length = 0;
+        }, 1000);
       }
     }
   }
 }
 
+// The following functions implements a timer and checks for wins/loses
 let gameDuration = 60;
 let timer;
 let gameStarted = false;
@@ -106,12 +103,21 @@ function startTimer() {
   if (!gameStarted) {
     gameStarted = true;
     timer = setInterval(function () {
-      gameDuration --;
+      gameDuration--;
       document.querySelector("#timer").textContent = `TIMER: ${gameDuration}`;
 
       if (gameDuration === 0) {
         clearInterval(timer);
         document.querySelector("#timer").textContent = "Time's up. You lose!";
+        setTimeout(function () {
+          resetGame();
+
+          const allCards = document.querySelectorAll(".card");
+          allCards.forEach((card) => {
+            card.classList.remove("flipped");
+            card.classList.add("un-flipped");
+          });
+        }, 2000);
       }
 
       checkForWin();
@@ -123,7 +129,7 @@ function checkForWin() {
   const allFlippedCards = document.querySelectorAll(".card.flipped");
   if (allFlippedCards.length === cards.length && gameStarted) {
     clearInterval(timer);
-    document.querySelector("#timer").textContent = "You win!"
+    document.querySelector("#timer").textContent = "You win!";
   }
 }
 
@@ -153,24 +159,24 @@ startButton.addEventListener("click", function () {
   createCardElements(cards);
 
   setTimeout(function () {
-
     const allCards = document.querySelectorAll(".card");
     allCards.forEach((card) => {
       card.classList.remove("flipped");
-      card.classList.toggle("un-flipped")
+      card.classList.toggle("un-flipped");
     });
   }, 10000);
 });
 
+// Added function to reset the game at any point during play
 const resetButton = document.querySelector("#reset-button");
-resetButton.addEventListener("click", function() {
+resetButton.addEventListener("click", function () {
   resetGame();
   shuffleCards(cards);
   createCardElements(cards);
 
   const allCards = document.querySelectorAll(".card");
-    allCards.forEach((card) => {
-      card.classList.remove("flipped");
-      card.classList.toggle("un-flipped")
-    });
-})
+  allCards.forEach((card) => {
+    card.classList.remove("flipped");
+    card.classList.toggle("un-flipped");
+  });
+});
