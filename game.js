@@ -88,6 +88,7 @@ function flipCard(cardElement) {
           card2.classList.toggle("un-flipped");
           card2.classList.remove("flipped");
           flippedCards.length = 0;
+          console.log("flip cards back over");
         }, 1000);
       }
     }
@@ -108,7 +109,7 @@ function startTimer() {
 
       if (gameDuration === 0) {
         clearInterval(timer);
-        document.querySelector("#timer").textContent = "Time's up. You lose!";
+        document.querySelector("#timer").textContent = "Time's Up! You Lose!";
         setTimeout(function () {
           resetGame();
 
@@ -129,7 +130,16 @@ function checkForWin() {
   const allFlippedCards = document.querySelectorAll(".card.flipped");
   if (allFlippedCards.length === cards.length && gameStarted) {
     clearInterval(timer);
-    document.querySelector("#timer").textContent = "You win!";
+    document.querySelector("#timer").textContent = "You Win!";
+    setTimeout(function () {
+      resetGame();
+
+      const allCards = document.querySelectorAll(".card");
+      allCards.forEach((card) => {
+        card.classList.remove("flipped");
+        card.classList.add("un-flipped");
+      });
+    }, 2000);
   }
 }
 
