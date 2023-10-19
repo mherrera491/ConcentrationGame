@@ -11,18 +11,18 @@
 
 // Array of card objects
 const cards = [
-  { value: "clubs-ace", image: "./assets/images/clubs_ace.svg" },
-  { value: "diamonds-ace", image: "./assets/images/diamonds_ace.svg" },
-  { value: "hearts-ace", image: "./assets/images/hearts_ace.svg" },
-  { value: "clubs-jack", image: "./assets/images/clubs_jack.svg" },
-  { value: "diamonds-queen", image: "./assets/images/diamonds_queen.svg" },
-  { value: "hearts-king-ace", image: "./assets/images/hearts_king.svg" },
-  { value: "clubs-ace", image: "./assets/images/clubs_ace.svg" },
-  { value: "diamonds-ace", image: "./assets/images/diamonds_ace.svg" },
-  { value: "hearts-ace", image: "./assets/images/hearts_ace.svg" },
-  { value: "clubs-jack", image: "./assets/images/clubs_jack.svg" },
-  { value: "diamonds-queen", image: "./assets/images/diamonds_queen.svg" },
-  { value: "hearts-king-ace", image: "./assets/images/hearts_king.svg" },
+  { value: "clubs-ace", image: "./assets/images/clubs_ace.png" },
+  { value: "diamonds-ace", image: "./assets/images/diamonds_ace.png" },
+  { value: "hearts-ace", image: "./assets/images/hearts_ace.png" },
+  { value: "clubs-jack", image: "./assets/images/clubs_jack.png" },
+  { value: "diamonds-queen", image: "./assets/images/diamonds_queen.png" },
+  { value: "hearts-king-ace", image: "./assets/images/hearts_king.png" },
+  { value: "clubs-ace", image: "./assets/images/clubs_ace.png" },
+  { value: "diamonds-ace", image: "./assets/images/diamonds_ace.png" },
+  { value: "hearts-ace", image: "./assets/images/hearts_ace.png" },
+  { value: "clubs-jack", image: "./assets/images/clubs_jack.png" },
+  { value: "diamonds-queen", image: "./assets/images/diamonds_queen.png" },
+  { value: "hearts-king-ace", image: "./assets/images/hearts_king.png" },
 ];
 
 // Function to shuffle cards
@@ -52,7 +52,7 @@ function createCardElements(cards) {
 
     const backFace = document.createElement("img");
     backFace.classList.add("card-face", "back-face");
-    backFace.src = "/assets/images/blue.svg";
+    backFace.src = "/assets/images/blue.png";
 
     cardElement.appendChild(frontFace);
     cardElement.appendChild(backFace);
