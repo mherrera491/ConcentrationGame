@@ -45,4 +45,4 @@
 * N/A
 
 ## <a name="author"></a>About The Author
-I build applications and mini projects tied to my various interests. I look for creative solutions to real world problems and think of technical ways to address them. While no application is ever perfect I find joy in the process and all my final products!
+I am a software engineer who excels at analyzing problems and coming up with creative and effective solutions. As a team leader or an independent worker I believe in collaborating to break down intricate problems to come up with effective solutions. I can build a website, fix code, and help brands improve their overall business.
