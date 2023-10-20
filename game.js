@@ -165,12 +165,4 @@ startButton.addEventListener("click", function () {
 const resetButton = document.querySelector("#reset-button");
 resetButton.addEventListener("click", function () {
   resetGame();
-  shuffleCards(cards);
-  createCardElements(cards);
-
-  const allCards = document.querySelectorAll(".card");
-  allCards.forEach((card) => {
-    card.classList.remove("flipped");
-    card.classList.toggle("un-flipped");
-  });
 });
