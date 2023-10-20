@@ -1,14 +1,3 @@
-// GAME CHOICE: CONCENTRATION GAME (MEMORY GAME)
-// Create cards (even number amount)
-// Shuffle cards
-// create game board with cards
-// preview the newly created game board for a limited time
-// add event listeners to card to flip it
-// If second card matches the first card then remove cards from the game board
-// If card does not match the previous card then flip cards back over and let player know they are wrong
-// Create a timer for the game - if player runs out of time they lose
-// If cards are all cleared announce that player has won
-
 // Array of card objects
 const cards = [
   { value: "clubs-ace", image: "./assets/images/clubs_ace.png" },
@@ -59,11 +48,6 @@ function createCardElements(cards) {
 
     cardElement.dataset.value = card.value;
 
-    cardElement.addEventListener("click", function () {
-      cardElement.classList.toggle("un-flipped");
-      cardElement.classList.remove("flipped");
-    });
-
     gameBoard.appendChild(cardElement);
   }
 }
@@ -74,7 +58,8 @@ const flippedCards = [];
 // function checks for matches; will flip cards back over if no match is made
 function flipCard(cardElement) {
   if (flippedCards.length < 2) {
-    cardElement.classList.toggle("flipped");
+    cardElement.classList.add("flipped");
+    cardElement.classList.remove("un-flipped");
     flippedCards.push(cardElement);
 
     if (flippedCards.length === 2) {
@@ -83,13 +68,12 @@ function flipCard(cardElement) {
         flippedCards.length = 0;
       } else {
         setTimeout(() => {
-          card1.classList.toggle("un-flipped");
+          card1.classList.add("un-flipped");
           card1.classList.remove("flipped");
-          card2.classList.toggle("un-flipped");
+          card2.classList.add("un-flipped");
           card2.classList.remove("flipped");
           flippedCards.length = 0;
-          console.log("flip cards back over");
-        }, 1000);
+        }, 750);
       }
     }
   }
@@ -126,20 +110,23 @@ function startTimer() {
   }
 }
 
+// Following function checks for win if all cards have been successfully flipped. It will then reset the game after 2 seconds
 function checkForWin() {
-  const allFlippedCards = document.querySelectorAll(".card.flipped");
-  if (allFlippedCards.length === cards.length && gameStarted) {
-    clearInterval(timer);
-    document.querySelector("#timer").textContent = "You Win!";
-    setTimeout(function () {
-      resetGame();
+  if (gameStarted) {
+    const allFlippedCards = document.querySelectorAll(".card.flipped");
+    if (allFlippedCards.length === cards.length && gameStarted) {
+      clearInterval(timer);
+      document.querySelector("#timer").textContent = "You Win!";
+      setTimeout(function () {
+        resetGame();
 
-      const allCards = document.querySelectorAll(".card");
-      allCards.forEach((card) => {
-        card.classList.remove("flipped");
-        card.classList.add("un-flipped");
-      });
-    }, 2000);
+        const allCards = document.querySelectorAll(".card");
+        allCards.forEach((card) => {
+          card.classList.remove("flipped");
+          card.classList.add("un-flipped");
+        });
+      }, 2000);
+    }
   }
 }
 
@@ -153,7 +140,7 @@ function resetGame() {
 const gameBoard = document.querySelector("#game-board");
 
 gameBoard.addEventListener("click", function (event) {
-  startTimer();
+  // startTimer();
   checkForWin();
   const card = event.target.closest(".card");
   if (card) {
@@ -174,6 +161,7 @@ startButton.addEventListener("click", function () {
       card.classList.remove("flipped");
       card.classList.toggle("un-flipped");
     });
+    startTimer();
   }, 10000);
 });
 
