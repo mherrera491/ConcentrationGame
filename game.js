@@ -96,12 +96,6 @@ function startTimer() {
         document.querySelector("#timer").textContent = "Time's Up! You Lose!";
         setTimeout(function () {
           resetGame();
-
-          const allCards = document.querySelectorAll(".card");
-          allCards.forEach((card) => {
-            card.classList.remove("flipped");
-            card.classList.add("un-flipped");
-          });
         }, 2000);
       }
 
@@ -119,12 +113,6 @@ function checkForWin() {
       document.querySelector("#timer").textContent = "You Win!";
       setTimeout(function () {
         resetGame();
-
-        const allCards = document.querySelectorAll(".card");
-        allCards.forEach((card) => {
-          card.classList.remove("flipped");
-          card.classList.add("un-flipped");
-        });
       }, 2000);
     }
   }
@@ -135,8 +123,15 @@ function resetGame() {
   gameStarted = false;
   clearInterval(timer);
   document.querySelector("#timer").textContent = `TIMER: ${gameDuration}`;
+
+  const allCards = document.querySelectorAll(".card");
+  allCards.forEach((card) => {
+    card.classList.remove("flipped");
+    card.classList.add("un-flipped");
+  });
 }
 
+// Following adds click event listeners to handle card clicks
 const gameBoard = document.querySelector("#game-board");
 
 gameBoard.addEventListener("click", function (event) {
