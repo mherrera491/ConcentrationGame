@@ -140,11 +140,12 @@ function resetGame() {
 const gameBoard = document.querySelector("#game-board");
 
 gameBoard.addEventListener("click", function (event) {
-  // startTimer();
-  checkForWin();
-  const card = event.target.closest(".card");
-  if (card) {
-    flipCard(card);
+  if (gameStarted) {
+    checkForWin();
+    const card = event.target.closest(".card");
+    if (card) {
+      flipCard(card);
+    }
   }
 });
 
