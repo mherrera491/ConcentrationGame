@@ -11,6 +11,7 @@ My browser-based game, "Vegas Card Flip," is a project I created to show my know
 ## Table of Contents
 * [Technologies Used](#technologiesused)
 * [Design](#design)
+* [Functionality](#functionality)
 * [Project Next Steps](#nextsteps)
 * [Deployed App](#deployment)
 * [About the Author](#author)
@@ -29,6 +30,15 @@ My browser-based game, "Vegas Card Flip," is a project I created to show my know
 
 ## <a name="design"></a>Design
 * Design elements implemented using HTML5 and CSS3. 
+
+## <a name="functionality"></a>Functionality
+* Creates a shuffled set of cards
+* Takes shuffled cards and creates a new game board
+* Will check for card matches as player clicks on two cards
+* Cards will remain flipped or flip back over depending on if they are matches
+* Checks for wins throughout the game; once player matches all cards they will get a "win" message
+* Player is able to reset/restart the game at any time while playing
+
 
 ## <a name="nextsteps"></a>Project Next Steps
 * Users will be able to choose different difficulties
