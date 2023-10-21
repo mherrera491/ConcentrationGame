@@ -1,10 +1,10 @@
 # Vegas Card Flip (Memory Game)
 
-#### A simple browser-based memory game created as my first project.
+#### A browser-based memory game created as my first project.
 <img src="./assets/images/memorygame-home.png" alt="Home Page"/>
 
 ## Description
-"My browser-based game, "Vegas Card Flip," is a project I created to show my knowledge of vanilla JavaScript, HTML, and CSS. It is a memory game that involves the player to match multiple pairs of cards within a set time limit."
+My browser-based game, "Vegas Card Flip," is a project I created to show my knowledge of vanilla JavaScript, HTML, and CSS. It is a memory game that requires the player to match multiple pairs of cards within a set time limit.
 
 <img src="./assets/images/memorygame-play.png" alt="Game Page"/>
 
